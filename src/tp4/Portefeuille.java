@@ -5,6 +5,7 @@
  */
 package tp4;
 
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -21,13 +22,16 @@ public class Portefeuille {
     //Constructeurs
     public Portefeuille(){
         
+       map_fonds = new HashMap<>();
+       map_instru = new HashMap<>();
     }
     
     //Methodes
     public double recherche_fond(){
-        
+     
         return 102;
     }
+    
     
 }
 

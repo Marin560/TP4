@@ -5,10 +5,19 @@
  */
 package tp4;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author peti_
  */
 public class Instrument {
+    
+    ArrayList liste_fonds;
+    
+    //Constructeur
+    public Instrument(){
+        liste_fonds = new ArrayList();
+    }
     
 }

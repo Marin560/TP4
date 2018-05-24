@@ -7,6 +7,7 @@ package tp4;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Scanner;
 
 /**
  *
@@ -27,8 +28,20 @@ public class Portefeuille {
     }
     
     //Methodes
-    public double recherche_fond(){
+    public double recherche_fond(String cle_fond){
      
+   Scanner sc = new Scanner(System.in);     
+   System.out.println("Veuillez entrer le nom de l'objet recherché");
+   
+   String nom_fond = sc.nextLine();
+   
+   if (nom_fond != cle_fond){
+       
+       
+   }
+
+  
+   
         return 102;
     }
     

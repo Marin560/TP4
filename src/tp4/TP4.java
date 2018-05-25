@@ -30,6 +30,11 @@ public class TP4 {
             //On demande à l'utilisateur de créer un nouveau fond
             System.out.println("Choisir un nom de fond");
             String nom_fond = sc.nextLine();
+            
+            if(nom_fond.equals("stop")) {
+            	stop = true;
+            }
+            
             System.out.println("Choisir la valeur du fond");
             double amount_fond = sc.nextDouble();
             

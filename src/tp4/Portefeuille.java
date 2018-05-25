@@ -25,10 +25,18 @@ public class Portefeuille {
         
        map_fonds = new HashMap<>();
        map_instru = new HashMap<>();
+       
     }
     
     //Methodes
-    public double recherche_fond(String cle_fond){
+    public void ajouter_fond(String nom, Fonds fond){
+        //On ajoute le fond à la hashMap fond 
+        map_fonds.put(nom, fond);
+        
+    }
+    
+    
+    public double recherche_fond(){
      
    Scanner sc = new Scanner(System.in);     
    System.out.println("Veuillez entrer le nom de l'objet recherché");

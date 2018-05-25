@@ -13,11 +13,21 @@ import java.util.ArrayList;
  */
 public class Instrument {
     
-    ArrayList liste_fonds;
+    ArrayList<Fonds> liste_fonds;
     
     //Constructeur
     public Instrument(){
-        liste_fonds = new ArrayList();
+        liste_fonds = new ArrayList<Fonds>();
     }
+
+	public ArrayList getListe_fonds() {
+		return liste_fonds;
+	}
+
+	public void setListe_fonds(ArrayList<Fonds> liste_fonds) {
+		this.liste_fonds = liste_fonds;
+	}
+    
+    
     
 }

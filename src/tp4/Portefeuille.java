@@ -5,6 +5,7 @@
  */
 package tp4;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -35,10 +36,42 @@ public class Portefeuille {
     }
     
     
-    public double recherche_fond(){
-     
-        return 102;
+    public double recherche_fond(String nom_fond) throws FondsInexistant{ //Je reçois le paramètre du fond
+    	
+    	//Je recherche mon fond dans ma HashMap
+    	Fonds fd = map_fonds.get(nom_fond);
+    	if(fd == null) {
+    		throw new FondsInexistant();
+    	}
+    	else {
+    		return fd.getAmount();
+    	}
+        
     }
+    
+    public ArrayList<Fonds> recherche_instrument(String nom_instrument) throws InstrumentInexistant{ //Je reçois le paramètre du fond
+    	
+    	//Je recherche mon fond dans ma HashMap
+    	Instrument instru = map_instru.get(nom_instrument);
+    	if(instru == null) {
+    		throw new InstrumentInexistant();
+    	}
+    	else {
+    		//return instru.getAmount();
+    		return instru.getListe_fonds(); //Je renvoie la liste des fonds
+    	}
+        
+    }
+    
+    /*
+    Je crée une méthode qui me permet de rechercher un portefeuille en 
+    entrant son nom.
+    
+    Si ça ne marche pas, je crée une exception qui s'appelle "FondsInexistant"
+    
+    
+    Je crée donc un menu pour pouvoir choisir une option (ajouter, rechercher, etc.)
+    */
     
     
 }

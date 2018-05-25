@@ -25,29 +25,31 @@ public class TP4 {
         //Je cr√©e un instrument
         Portefeuille nv_pf = new Portefeuille();
         
-        while(stop == false){
-            
-            //On demande √† l'utilisateur de cr√©er un nouveau fond
+        while(stop == false) {
+            //On demande ‡ l'utilisateur les infos du nouveau fond
             System.out.println("Choisir un nom de fond");
             String nom_fond = sc.nextLine();
-            
-            if(nom_fond.equals("stop")) {
-            	stop = true;
-            }
-            
             System.out.println("Choisir la valeur du fond");
             double amount_fond = sc.nextDouble();
             
             sc.nextLine(); //Vider le scanner
             
-            //Je cr√©e un nouveau fond avec le bon nom et la bonne valeur   
+            //On crÈe un nouveau fond avec le bon nom et la bonne valeur   
             Fonds nv = new Fonds(amount_fond);          
             
-            //J'ajoute maintenant mon fond dans la hashmap de l'instrument avec comme cl√©, le nom du fond
+ //Q1.2     //J'ajoute maintenant mon fond dans la hashmap de l'instrument avec comme clÈ, le nom du fond
             nv_pf.ajouter_fond(nom_fond, nv);
             
+            //Je demande ‡ rechercher un fond
+            System.out.println("Quel est le nom du fond ‡ rechercher ?");
+            try {
+				System.out.println(nv_pf.recherche_fond(sc.nextLine()));
+			} catch (FondsInexistant e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+            
         }
-        
         
     }
     

@@ -55,31 +55,38 @@ public class TP4 {
 	        choix = scanner.nextInt();
 	        
 	        switch(choix) {
-                    
-                    case 2 : {
-                    //Je demande ï¿½ rechercher un fond
-            System.out.println("Quel est le nom du fond Ã  rechercher ?");
-            try {
-				nv_pf.recherche_fond(nom_fond);
-				throw new FondExistant();
-				
-			} catch (FondsInexistant e) {
-				//Question 1.5 : on ajouter le fond ï¿½ la HashMap 
-				Fonds fond = new Fonds(amount_fond);
-				try {
-					nv_pf.ajouter_fond(nom_fond, fond);
-					
-				} catch (FondExistant e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-				System.out.println("Le nouveau fond a ï¿½tï¿½ ajoutï¿½");
-				
-			} catch (FondExistant e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-                }break;
+	        
+	        	case 1 : //Pour ajouter un fond
+	        		
+	        		break;
+	        		
+            	case 2 : {
+			            //Je demande ï¿½ rechercher un fond
+			            System.out.println("Quel est le nom du fond Ã  rechercher ?");
+			            nom_fond = sc.nextLine();
+			            try {
+							nv_pf.recherche_fond(nom_fond);
+							throw new FondExistant();
+							
+						} catch (FondsInexistant e) {
+							//Question 1.5 : on ajouter le fond ï¿½ la HashMap 
+							System.out.println("Quel est le nom du fond Ã  rechercher ?");
+					        amount_fond = sc.nextDouble();
+							Fonds fond = new Fonds(amount_fond);
+							try {
+								nv_pf.ajouter_fond(nom_fond, fond);
+								
+							} catch (FondExistant e1) {
+								// TODO Auto-generated catch block
+								e1.printStackTrace();
+							}
+							System.out.println("Le nouveau fond a été ajouté");
+							
+						} catch (FondExistant e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+                    }break;
 	        	case 3 :
 	        		
 	        		System.out.println("Nom du fond a supprimer");
@@ -169,8 +176,6 @@ public class TP4 {
 	        	case 9 : 
 	        		arret = true; 
 	        		break;
-	        		
-                        case 9 : arret = true; break;
                         
 	        	default :
 	        		System.out.println("Entrez un numï¿½ro valable svp");
@@ -180,9 +185,9 @@ public class TP4 {
 	        System.out.println("Appuyez sur entrï¿½e pour continuer"); 
 	        sc.nextLine();
         
-    }
-    }
         }
+   
+        
         System.out.println("Merci et au revoir");
      }
     

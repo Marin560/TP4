@@ -37,8 +37,9 @@ public class Instrument implements Comparable {
       
       System.out.println("Après le tri avec notre comparateur");
     
-      //nous créons une classe anonyme ici, mais rien ne vous empêche d'en créer une dans un fichier séparé
-        compareTo(t);
+      
+      Fonds fond = new Fonds(amount_fond);
+        compareTo(fond);
 
       it = liste_fonds.iterator();
       while(it.hasNext())

@@ -19,18 +19,26 @@ public class Instrument implements Comparable {
     
    ArrayList<Fonds> liste_fonds;
     
+
     //Constructeur
+   	
+	public Instrument() {
+		liste_fonds = new ArrayList<Fonds>();
+	}
+	
+	
+   /*
     public Instrument(){
       liste_fonds = new ArrayList<Fonds>();
         
         System.out.println("Avant le tri : ");
-      Iterator<Fonds> it = liste_fonds.iterator();
-      while(it.hasNext())
-         System.out.println(it.next());
+        Iterator<Fonds> it = liste_fonds.iterator();
+        while(it.hasNext()) 
+        	System.out.println(it.next());
         
-         Collections.sort(liste_fonds);
-         
-      System.out.println("Après le tri : ");
+      Collections.sort(liste_fonds);
+      
+      System.out.println("Apr�s le tri : ");
       it = liste_fonds.iterator();
       while(it.hasNext())
          System.out.println(it.next());
@@ -44,7 +52,8 @@ public class Instrument implements Comparable {
       it = liste_fonds.iterator();
       while(it.hasNext())
          System.out.println(it.next());
-   }
+   	}
+   */
 
         
        

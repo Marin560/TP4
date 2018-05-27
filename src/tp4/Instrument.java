@@ -47,7 +47,7 @@ public class Instrument implements Comparable {
 
         
        
-    }
+    
     
     public void ajouter_fond(Fonds fond) {
     	liste_fonds.add(fond);

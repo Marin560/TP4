@@ -62,6 +62,31 @@ public class TP4 {
 	        choix = scanner.nextInt();
 	        
 	        switch(choix) {
+                    
+                    case 2 : {
+                    //Je demande � rechercher un fond
+            System.out.println("Quel est le nom du fond à rechercher ?");
+            try {
+				nv_pf.recherche_fond(nom_fond);
+				throw new FondExistant();
+				
+			} catch (FondsInexistant e) {
+				//Question 1.5 : on ajouter le fond � la HashMap 
+				Fonds fond = new Fonds(amount_fond);
+				try {
+					nv_pf.ajouter_fond(nom_fond, fond);
+					
+				} catch (FondExistant e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				System.out.println("Le nouveau fond a �t� ajout�");
+				
+			} catch (FondExistant e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+                }break;
 	        	case 3 :
 	        		
 	        		System.out.println("Nom du fond a supprimer");
@@ -148,10 +173,13 @@ public class TP4 {
 	                
 	                break;
 	        		
+                        case 9 : arret = true; break;
+                        
 	        	default :
 	        		System.out.println("Entrez un num�ro valable svp");
 	                break;
-	        		
+                        
+                    
 	        }System.out.println("Appuyez sur entr�e pour continuer"); sc.nextLine();
         	
         	
@@ -161,37 +189,13 @@ public class TP4 {
  //Q1.2     //J'ajoute maintenant mon fond dans la hashmap de l'instrument avec comme cl�, le nom du fond
             nv_pf.ajouter_fond(nom_fond, nv);
             
-	}break;
-		case 2 : {
-                    //Je demande � rechercher un fond
-            System.out.println("Quel est le nom du fond à rechercher ?");
-            try {
-				nv_pf.recherche_fond(nom_fond);
-				throw new FondExistant();
-				
-			} catch (FondsInexistant e) {
-				//Question 1.5 : on ajouter le fond � la HashMap 
-				Fonds fond = new Fonds(amount_fond);
-				try {
-					nv_pf.ajouter_fond(nom_fond, fond);
-					
-				} catch (FondExistant e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-				System.out.println("Le nouveau fond a �t� ajout�");
-				
-			} catch (FondExistant e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-                }break;
+	}
+		
                 
-		case 3 : System.out.println("Sous menu 2"); break;
-                case 9 : arret = true; break;
-		default : System.out.println("entrez un choix entre 1 et 3"); break;
-                } 
-                }arret=true;
+        }	
+                
+                arret=true;
         
-   }
+    }
+    }
     

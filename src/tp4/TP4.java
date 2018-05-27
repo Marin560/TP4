@@ -16,7 +16,7 @@ public class TP4 {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FondsInexistant {
         // TODO code application logic here
         
        Scanner sc = new Scanner(System.in);
@@ -27,7 +27,7 @@ public class TP4 {
         
         
         boolean arret = false;
-        //while (!arret){
+        {
 	System.out.println("--Menu--");
 	System.out.println("Ajouter un Fond : tapez 1");
 	System.out.println("Rechercher un Fond : tapez 2");
@@ -55,10 +55,10 @@ public class TP4 {
  //Q1.2     //J'ajoute maintenant mon fond dans la hashmap de l'instrument avec comme cl�, le nom du fond
             nv_pf.ajouter_fond(nom_fond, nv);
             
-	}
+	}break;
 		case 2 : {
                     //Je demande � rechercher un fond
-            System.out.println("Quel est le nom du fond � rechercher ?");
+            System.out.println("Quel est le nom du fond à rechercher ?");
             try {
 				nv_pf.recherche_fond(nom_fond);
 				throw new FondExistant();
@@ -84,8 +84,8 @@ public class TP4 {
 		case 3 : System.out.println("Sous menu 2"); break;
                 case 9 : arret = true; break;
 		default : System.out.println("entrez un choix entre 1 et 3"); break;
-                //} arret=true;
-                }
+                } 
+                }arret=true;
         
 
         

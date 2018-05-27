@@ -17,10 +17,7 @@ public class TP4 {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws FondsInexistant {
-        // TODO code application logic here
-        
-       
-        
+
         //Variables
     	Scanner sc = new Scanner(System.in);
         Portefeuille nv_pf = new Portefeuille(); //Nouveau portefeuille
@@ -30,14 +27,9 @@ public class TP4 {
         String nom_instrument;
         
         boolean arret = false;
-        {
-	System.out.println("--Menu--");
-	System.out.println("Ajouter un Fond : tapez 1");
-	System.out.println("Rechercher un Fond : tapez 2");
-	System.out.println("Afficher les Fonds : tapez 3");
-        System.out.println("Quitter : tapez 9");
+     
         
-        //Je crï¿½e un fond fictif 
+        //Je crée un fond fictif 
         Fonds fd = new Fonds(1500);
         try {
 			nv_pf.ajouter_fond("oui", fd);
@@ -49,12 +41,13 @@ public class TP4 {
         while (!arret){
         	
 	        System.out.println("--Menu--");
-			System.out.println("Rechercher un Fond : tapez 1");
-			System.out.println("Afficher les Fonds : tapez 2");
-			System.out.println("Supprimer un Fond : tapez 3");
-			System.out.println("Supprimer un instrument : tapez 4");
-		    System.out.println("Question 1.5 : tapez 5");
-		    System.out.println("Question 1.6 : tapez 6");
+	        System.out.println("Ajouter un Fond : tapez 1");
+			System.out.println("Rechercher un Fond : tapez 2");
+			System.out.println("Afficher les Fonds : tapez 3");
+			System.out.println("Supprimer un Fond : tapez 4");
+			System.out.println("Supprimer un instrument : tapez 5");
+		    System.out.println("Question 1.5 : tapez 15");
+		    System.out.println("Question 1.6 : tapez 16");
 		    System.out.println("Quitter : tapez 9");
 	        
 	        int choix = 0;
@@ -62,7 +55,7 @@ public class TP4 {
 	        choix = scanner.nextInt();
 	        
 	        switch(choix) {
-	        	case 3 :
+	        	case 4 : //Supprimer un fond
 	        		
 	        		System.out.println("Nom du fond a supprimer");
 	                nom_fond = sc.nextLine();
@@ -70,7 +63,7 @@ public class TP4 {
 	                nv_pf.suppression_fond(nom_fond);
 	                
 	        		break;
-	        	case 4 :
+	        	case 5 : //supprimer un instrument
 	        		
 	        		System.out.println("Nom de l'instrument a supprimer");
 	                nom_instrument = sc.nextLine();
@@ -79,7 +72,7 @@ public class TP4 {
 	                
 	        		break;
 	        	
-	        	case 5 :          
+	        	case 15 : //Test de la question 1.5  
 	    	        //On demande ï¿½ l'utilisateur les infos du nouveau fond
 	                System.out.println("Nom du fond");
 	                nom_fond = sc.nextLine();
@@ -112,7 +105,7 @@ public class TP4 {
 	                
 	                break;
 	                
-	        	case 6: //Test de la question 1.6
+	        	case 16: //Test de la question 1.6
 	        		//On demande ï¿½ l'utilisateur le nom de l'instrument 
 	                System.out.println("Nom de l'instrument");
 	                nom_instrument = sc.nextLine();
@@ -147,51 +140,21 @@ public class TP4 {
 	                System.out.println("Le fond "+nom_fond+" a ï¿½tï¿½ ajoutï¿½ ï¿½ l'instrument "+nom_instrument);
 	                
 	                break;
+	                
+	        	case 9 : 
+	        		arret = true; 
+	        		break;
 	        		
 	        	default :
 	        		System.out.println("Entrez un numï¿½ro valable svp");
 	                break;
 	        		
-	        }System.out.println("Appuyez sur entrï¿½e pour continuer"); sc.nextLine();
-        	
-        	
-            
-            
-            
- //Q1.2     //J'ajoute maintenant mon fond dans la hashmap de l'instrument avec comme clï¿½, le nom du fond
-            nv_pf.ajouter_fond(nom_fond, nv);
-            
-	}break;
-		case 2 : {
-                    //Je demande ï¿½ rechercher un fond
-            System.out.println("Quel est le nom du fond Ã  rechercher ?");
-            try {
-				nv_pf.recherche_fond(nom_fond);
-				throw new FondExistant();
-				
-			} catch (FondsInexistant e) {
-				//Question 1.5 : on ajouter le fond ï¿½ la HashMap 
-				Fonds fond = new Fonds(amount_fond);
-				try {
-					nv_pf.ajouter_fond(nom_fond, fond);
-					
-				} catch (FondExistant e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-				System.out.println("Le nouveau fond a ï¿½tï¿½ ajoutï¿½");
-				
-			} catch (FondExistant e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-                }break;
-                
-		case 3 : System.out.println("Sous menu 2"); break;
-                case 9 : arret = true; break;
-		default : System.out.println("entrez un choix entre 1 et 3"); break;
-                } 
-                }arret=true;
+	        }
+	        System.out.println("Appuyez sur entrée pour continuer"); 
+	        sc.nextLine();
         
-   }
+        }
+        System.out.println("Merci et au revoir");
+     }
     
+}

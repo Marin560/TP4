@@ -30,9 +30,14 @@ public class Portefeuille {
     }
     
     //Methodes
-    public void ajouter_fond(String nom, Fonds fond){
-        //On ajoute le fond à la hashMap fond 
-        map_fonds.put(nom, fond);
+    public void ajouter_fond(String nom_fond, Fonds fond) throws FondsInexistant {
+
+    	
+    	if(map_fonds.get(nom_fond) == null) { //Si le fond n'existe pas
+    		throw new FondsInexistant();
+    	}
+    	else //Si le fond existe 
+    		 map_fonds.put(nom_fond, fond);
         
     }
     

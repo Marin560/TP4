@@ -29,7 +29,7 @@ public class TP4 {
         boolean arret = false;
      
         
-        //Je crée un fond fictif 
+        //Je crï¿½e un fond fictif 
         Fonds fd = new Fonds(1500);
         try {
 			nv_pf.ajouter_fond("oui", fd);
@@ -55,7 +55,32 @@ public class TP4 {
 	        choix = scanner.nextInt();
 	        
 	        switch(choix) {
-	        	case 4 : //Supprimer un fond
+                    
+                    case 2 : {
+                    //Je demande ï¿½ rechercher un fond
+            System.out.println("Quel est le nom du fond Ã  rechercher ?");
+            try {
+				nv_pf.recherche_fond(nom_fond);
+				throw new FondExistant();
+				
+			} catch (FondsInexistant e) {
+				//Question 1.5 : on ajouter le fond ï¿½ la HashMap 
+				Fonds fond = new Fonds(amount_fond);
+				try {
+					nv_pf.ajouter_fond(nom_fond, fond);
+					
+				} catch (FondExistant e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				System.out.println("Le nouveau fond a ï¿½tï¿½ ajoutï¿½");
+				
+			} catch (FondExistant e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+                }break;
+	        	case 3 :
 	        		
 	        		System.out.println("Nom du fond a supprimer");
 	                nom_fond = sc.nextLine();
@@ -145,14 +170,18 @@ public class TP4 {
 	        		arret = true; 
 	        		break;
 	        		
+                        case 9 : arret = true; break;
+                        
 	        	default :
 	        		System.out.println("Entrez un numï¿½ro valable svp");
 	                break;
 	        		
 	        }
-	        System.out.println("Appuyez sur entrée pour continuer"); 
+	        System.out.println("Appuyez sur entrï¿½e pour continuer"); 
 	        sc.nextLine();
         
+    }
+    }
         }
         System.out.println("Merci et au revoir");
      }

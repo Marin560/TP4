@@ -29,7 +29,7 @@ public class Instrument implements Comparable {
 	
    /*
     public Instrument(){
-        liste_fonds = new ArrayList<Fonds>();
+      liste_fonds = new ArrayList<Fonds>();
         
         System.out.println("Avant le tri : ");
         Iterator<Fonds> it = liste_fonds.iterator();
@@ -38,7 +38,7 @@ public class Instrument implements Comparable {
         
       Collections.sort(liste_fonds);
       
-      System.out.println("Après le tri : ");
+      System.out.println("Aprï¿½s le tri : ");
       it = liste_fonds.iterator();
       while(it.hasNext())
          System.out.println(it.next());
@@ -56,7 +56,7 @@ public class Instrument implements Comparable {
 
         
        
-   
+    
     
     public void ajouter_fond(Fonds fond) {
     	liste_fonds.add(fond);

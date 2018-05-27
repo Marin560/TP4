@@ -17,11 +17,11 @@ import java.util.Iterator;
  */
 public class Instrument implements Comparable {
     
-   //ArrayList<Fonds> liste_fonds;
+   ArrayList<Fonds> liste_fonds;
     
     //Constructeur
     public Instrument(){
-        ArrayList<Fonds> liste_fonds = new ArrayList<Fonds>();
+      liste_fonds = new ArrayList<Fonds>();
         
         System.out.println("Avant le tri : ");
       Iterator<Fonds> it = liste_fonds.iterator();

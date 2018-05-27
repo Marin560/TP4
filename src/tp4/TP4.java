@@ -60,8 +60,7 @@ public class TP4 {
 	        		
 	        		break;
 	        		
-            	case 2 : 
-			            //Je demande ï¿½ rechercher un fond
+            	case 2 : //Rechercher un fond
 			            System.out.println("Quel est le nom du fond Ã  rechercher ?");
 			            nom_fond = sc.nextLine();
 			            
@@ -73,11 +72,11 @@ public class TP4 {
 							
 			            break;
                     
-            	case 3 :
+            	case 3 : //Afficher les fonds
             		
             		break;
             		
-	        	case 4 :
+	        	case 4 : //Supprimer un fond
 	        		
 	        		System.out.println("Nom du fond a supprimer");
 	                nom_fond = sc.nextLine();
@@ -95,7 +94,7 @@ public class TP4 {
 	        		break;
 	        	
 	        	case 15 : //Test de la question 1.5  
-	    	        //On demande ï¿½ l'utilisateur les infos du nouveau fond
+	    	        //On demande à l'utilisateur les infos du nouveau fond
 	                System.out.println("Nom du fond");
 	                nom_fond = sc.nextLine();
 	    	        
@@ -128,7 +127,7 @@ public class TP4 {
 	                break;
 	                
 	        	case 16: //Test de la question 1.6
-	        		//On demande ï¿½ l'utilisateur le nom de l'instrument 
+	        		//On demande à l'utilisateur le nom de l'instrument 
 	                System.out.println("Nom de l'instrument");
 	                nom_instrument = sc.nextLine();
 	                
@@ -150,7 +149,7 @@ public class TP4 {
 						// TODO Auto-generated catch block
 						//e.printStackTrace();
 						
-						//On crï¿½e le nouvel instrument et on l'ajoute ï¿½ la HashMap des instruments
+						//On crée le nouvel instrument et on l'ajoute ï¿½ la HashMap des instruments
 						Instrument nv_instru = new Instrument();
 						nv_pf.ajouter_instrument(nom_instrument, nv_instru); //Le nouvel instrument est ajoutï¿½ ï¿½ la HashMap
 						
@@ -163,12 +162,12 @@ public class TP4 {
 	                
 	                break;
 	                
-	        	case 9 : 
+	        	case 9 : //Stopper le programme
 	        		arret = true; 
 	        		break;
                         
 	        	default :
-	        		System.out.println("Entrez un numï¿½ro valable svp");
+	        		System.out.println("Entrez un numéro valable svp");
 	                break;
 	        		
 	        }

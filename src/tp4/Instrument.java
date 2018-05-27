@@ -19,6 +19,10 @@ public class Instrument {
     public Instrument(){
         liste_fonds = new ArrayList<Fonds>();
     }
+    
+    public void ajouter_fond(Fonds fond) {
+    	liste_fonds.add(fond);
+    }
 
 	public ArrayList getListe_fonds() {
 		return liste_fonds;

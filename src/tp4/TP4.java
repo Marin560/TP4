@@ -26,28 +26,37 @@ public class TP4 {
         Portefeuille nv_pf = new Portefeuille();
         
         while(stop == false) {
-            //On demande à l'utilisateur les infos du nouveau fond
-            System.out.println("Choisir un nom de fond");
+        	
+        	//On demande un nom de fond et une clé
+        	System.out.println("Choisir un nom de fond");
             String nom_fond = sc.nextLine();
             System.out.println("Choisir la valeur du fond");
             double amount_fond = sc.nextDouble();
             
             sc.nextLine(); //Vider le scanner
             
-            //On crée un nouveau fond avec le bon nom et la bonne valeur   
-            Fonds nv = new Fonds(amount_fond);          
-            
- //Q1.2     //J'ajoute maintenant mon fond dans la hashmap de l'instrument avec comme clé, le nom du fond
-            nv_pf.ajouter_fond(nom_fond, nv);
-            
-            //Je demande à rechercher un fond
-            System.out.println("Quel est le nom du fond à rechercher ?");
+            //On check en appelant la fonction recherche de la question 1.3
             try {
-				System.out.println(nv_pf.recherche_fond(sc.nextLine()));
+				nv_pf.recherche_fond(nom_fond);
+				throw new FondExistant();
+				
 			} catch (FondsInexistant e) {
+				//Question 1.5 : on ajouter le fond à la HashMap 
+				Fonds fond = new Fonds(amount_fond);
+				try {
+					nv_pf.ajouter_fond(nom_fond, fond);
+					
+				} catch (FondExistant e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				System.out.println("Le nouveau fond a été ajouté");
+				
+			} catch (FondExistant e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+        	
             
         }
         

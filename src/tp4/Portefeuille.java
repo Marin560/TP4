@@ -30,26 +30,27 @@ public class Portefeuille {
     }
     
     //Methodes
-    public void ajouter_fond(String nom_fond, Fonds fond) throws FondsInexistant {
-
-    	
-    	if(map_fonds.get(nom_fond) == null) { //Si le fond n'existe pas
-    		throw new FondsInexistant();
+    public void ajouter_fond(String nom_fond, Fonds fond) throws FondExistant {
+    	if(map_fonds.get(nom_fond) == null) { //Si le fond n'existe pas, je peux l'ajouter
+    		map_fonds.put(nom_fond, fond);
     	}
-    	else //Si le fond existe 
-    		 map_fonds.put(nom_fond, fond);
+    	else //Si le fond existe, je dis non et renvoie l'exception
+    		throw new FondExistant();
         
     }
     
     
     public double recherche_fond(String nom_fond) throws FondsInexistant{ //Je re�ois le param�tre du fond
-    	
     	//Je recherche mon fond dans ma HashMap
     	Fonds fd = map_fonds.get(nom_fond);
+    	
+    	//Si l'objet reçu est null, cela signifie que le fond n'existe pas. Exception.
     	if(fd == null) {
     		throw new FondsInexistant();
     	}
+    	//Si le fond existe, on renvoie sa valeur
     	else {
+    		System.out.println("Existe deja");
     		return fd.getAmount();
     	}
         
@@ -58,15 +59,20 @@ public class Portefeuille {
     public ArrayList<Fonds> recherche_instrument(String nom_instrument) throws InstrumentInexistant{ //Je re�ois le param�tre du fond
     	
     	//Je recherche mon fond dans ma HashMap
-    	Instrument instru = map_instru.get(nom_instrument);
-    	if(instru == null) {
+    	Instrument instru = map_instru.get(nom_instrument); //Je récupère l'instrument qui répond au nom reçu en paramètre
+    	if(instru == null) { //Si l'instrument n'existe pas, je revoie l'exception
     		throw new InstrumentInexistant();
     	}
     	else {
-    		//return instru.getAmount();
     		return instru.getListe_fonds(); //Je renvoie la liste des fonds
     	}
         
+    }
+    
+    public void ajout_fond_a_instrument (String nom_instrument, Fonds fond) {
+    	//Grâce à une clé reçue en paramètre, on ajoute le fond reçu à l'instrument
+    	map_instru.get(nom_instrument).ajouter_fond(fond);
+    	
     }
     
     /*

@@ -6,18 +6,23 @@
 package tp4;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 
 /**
  *
  * @author peti_
  */
-public class Instrument {
+public class Instrument implements Comparable {
     
     ArrayList<Fonds> liste_fonds;
     
     //Constructeur
     public Instrument(){
         liste_fonds = new ArrayList<Fonds>();
+        
+       
     }
     
     public void ajouter_fond(Fonds fond) {
@@ -31,7 +36,15 @@ public class Instrument {
 	public void setListe_fonds(ArrayList<Fonds> liste_fonds) {
 		this.liste_fonds = liste_fonds;
 	}
+
+        Arrays.sort(Fonds);
+
+    @Override
+    public int compareTo(Object t) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+       
+   }
     
     
-    
-}
+

@@ -19,29 +19,52 @@ public class TP4 {
     public static void main(String[] args) {
         // TODO code application logic here
         
-        boolean stop = false;
-        Scanner sc = new Scanner(System.in);
+       Scanner sc = new Scanner(System.in);
         
         //Je crÃ©e un instrument
         Portefeuille nv_pf = new Portefeuille();
         
-        while(stop == false) {
-        	
-        	//On demande un nom de fond et une clé
-        	System.out.println("Choisir un nom de fond");
+        
+        
+        boolean arret = false;
+        //while (!arret){
+	System.out.println("--Menu--");
+	System.out.println("Ajouter un Fond : tapez 1");
+	System.out.println("Rechercher un Fond : tapez 2");
+	System.out.println("Afficher les Fonds : tapez 3");
+        System.out.println("Quitter : tapez 9");
+        
+        int choix = 0;
+        Scanner scanner = new Scanner(System.in);
+         choix = scanner.nextInt();
+        
+	switch(choix)
+	{
+		case 1 :{
+                    //On demande ï¿½ l'utilisateur les infos du nouveau fond
+            System.out.println("Choisir un nom de fond");
             String nom_fond = sc.nextLine();
             System.out.println("Choisir la valeur du fond");
             double amount_fond = sc.nextDouble();
             
             sc.nextLine(); //Vider le scanner
             
-            //On check en appelant la fonction recherche de la question 1.3
+            //On crï¿½e un nouveau fond avec le bon nom et la bonne valeur   
+            Fonds nv = new Fonds(amount_fond);          
+            
+ //Q1.2     //J'ajoute maintenant mon fond dans la hashmap de l'instrument avec comme clï¿½, le nom du fond
+            nv_pf.ajouter_fond(nom_fond, nv);
+            
+	}
+		case 2 : {
+                    //Je demande ï¿½ rechercher un fond
+            System.out.println("Quel est le nom du fond ï¿½ rechercher ?");
             try {
 				nv_pf.recherche_fond(nom_fond);
 				throw new FondExistant();
 				
 			} catch (FondsInexistant e) {
-				//Question 1.5 : on ajouter le fond à la HashMap 
+				//Question 1.5 : on ajouter le fond ï¿½ la HashMap 
 				Fonds fond = new Fonds(amount_fond);
 				try {
 					nv_pf.ajouter_fond(nom_fond, fond);
@@ -50,15 +73,21 @@ public class TP4 {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-				System.out.println("Le nouveau fond a été ajouté");
+				System.out.println("Le nouveau fond a ï¿½tï¿½ ajoutï¿½");
 				
 			} catch (FondExistant e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-        	
-            
-        }
+                }break;
+                
+		case 3 : System.out.println("Sous menu 2"); break;
+                case 9 : arret = true; break;
+		default : System.out.println("entrez un choix entre 1 et 3"); break;
+                //} arret=true;
+                }
+        
+
         
     }
     

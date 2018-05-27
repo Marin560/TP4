@@ -57,7 +57,7 @@ public class Portefeuille {
     	}
     	//Si le fond existe, on renvoie sa valeur
     	else {
-    		System.out.println("Existe deja");
+    		System.out.println("Ce fond existe");
     		return fd.getAmount();
     	}
         

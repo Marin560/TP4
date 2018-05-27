@@ -41,12 +41,11 @@ public class TP4 {
         while (!arret){
         	
 	        System.out.println("--Menu--");
-	        System.out.println("Ajouter un Fond : tapez 1");
-			System.out.println("Rechercher un Fond : tapez 2");
+	        System.out.println("Ajouter un Fond (Q 1.5) : tapez 1");
+			System.out.println("Rechercher un Fond : tapez 2"); 
 			System.out.println("Afficher les Fonds : tapez 3");
 			System.out.println("Supprimer un Fond : tapez 4");
 			System.out.println("Supprimer un instrument : tapez 5");
-		    System.out.println("Question 1.5 : tapez 15");
 		    System.out.println("Question 1.6 : tapez 16");
 		    System.out.println("Quitter : tapez 9");
 	        
@@ -56,16 +55,13 @@ public class TP4 {
 	        
 	        switch(choix) {
 	        
-	        	case 1 : //Pour ajouter un fond
-	        		
-	        		break;
-	        		
             	case 2 : //Rechercher un fond
-			            System.out.println("Quel est le nom du fond Ã  rechercher ?");
-			            nom_fond = sc.nextLine();
-			            
-			            try {
-							nv_pf.recherche_fond(nom_fond);
+			           System.out.println("Quel est le nom du fond à rechercher ?");
+			           nom_fond = sc.nextLine();
+			           
+			           try {
+							System.out.println("Le fond \""+nom_fond+"\" contient "+nv_pf.recherche_fond(nom_fond)+" euros");
+								
 						} catch (FondsInexistant e) {
 							e.printStackTrace();
 						}
@@ -93,7 +89,7 @@ public class TP4 {
 	                
 	        		break;
 	        	
-	        	case 15 : //Test de la question 1.5  
+	        	case 1 : //Test de la question 1.5  
 	    	        //On demande à l'utilisateur les infos du nouveau fond
 	                System.out.println("Nom du fond");
 	                nom_fond = sc.nextLine();
@@ -153,12 +149,12 @@ public class TP4 {
 						Instrument nv_instru = new Instrument();
 						nv_pf.ajouter_instrument(nom_instrument, nv_instru); //Le nouvel instrument est ajoutï¿½ ï¿½ la HashMap
 						
-						System.out.println("L'instrument a ï¿½tï¿½ crï¿½e");
+						System.out.println("L'instrument a été crée");
 					}
 					
 					//On ajoute le fond ï¿½ l'instrument.
 					nv_pf.getMap_instru().get(nom_instrument).ajouter_fond(fond);					
-	                System.out.println("Le fond "+nom_fond+" a ï¿½tï¿½ ajoutï¿½ ï¿½ l'instrument "+nom_instrument);
+	                System.out.println("Le fond "+nom_fond+" a été ajouté à l'instrument "+nom_instrument);
 	                
 	                break;
 	                
@@ -171,7 +167,7 @@ public class TP4 {
 	                break;
 	        		
 	        }
-	        System.out.println("Appuyez sur entrï¿½e pour continuer"); 
+	        System.out.println("Appuyez sur entrée pour continuer"); 
 	        sc.nextLine();
         
         }

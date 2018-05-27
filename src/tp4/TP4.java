@@ -60,34 +60,24 @@ public class TP4 {
 	        		
 	        		break;
 	        		
-            	case 2 : {
+            	case 2 : 
 			            //Je demande ï¿½ rechercher un fond
 			            System.out.println("Quel est le nom du fond Ã  rechercher ?");
 			            nom_fond = sc.nextLine();
+			            
 			            try {
 							nv_pf.recherche_fond(nom_fond);
-							throw new FondExistant();
-							
 						} catch (FondsInexistant e) {
-							//Question 1.5 : on ajouter le fond ï¿½ la HashMap 
-							System.out.println("Quel est le nom du fond Ã  rechercher ?");
-					        amount_fond = sc.nextDouble();
-							Fonds fond = new Fonds(amount_fond);
-							try {
-								nv_pf.ajouter_fond(nom_fond, fond);
-								
-							} catch (FondExistant e1) {
-								// TODO Auto-generated catch block
-								e1.printStackTrace();
-							}
-							System.out.println("Le nouveau fond a été ajouté");
-							
-						} catch (FondExistant e) {
-							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
-                    }break;
-	        	case 3 :
+							
+			            break;
+                    
+            	case 3 :
+            		
+            		break;
+            		
+	        	case 4 :
 	        		
 	        		System.out.println("Nom du fond a supprimer");
 	                nom_fond = sc.nextLine();
@@ -128,7 +118,7 @@ public class TP4 {
 	    					// TODO Auto-generated catch block
 	    					e1.printStackTrace();
 	    				}
-	    				System.out.println("Le fond "+nom_fond+" a ï¿½tï¿½ ajoutï¿½");
+	    				System.out.println("Le fond "+nom_fond+" a été ajouté");
 	    				
 	    			}catch (FondExistant e) {
 	    				// TODO Auto-generated catch block

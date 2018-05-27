@@ -19,76 +19,144 @@ public class TP4 {
     public static void main(String[] args) {
         // TODO code application logic here
         
-       Scanner sc = new Scanner(System.in);
+       
         
-        //Je crÃ©e un instrument
-        Portefeuille nv_pf = new Portefeuille();
-        
-        
+        //Variables
+    	Scanner sc = new Scanner(System.in);
+        Portefeuille nv_pf = new Portefeuille(); //Nouveau portefeuille
+        Scanner scanner = new Scanner(System.in); //Nouveau Scanner
+        String nom_fond; 
+        double amount_fond;
+        String nom_instrument;
         
         boolean arret = false;
-        //while (!arret){
-	System.out.println("--Menu--");
-	System.out.println("Ajouter un Fond : tapez 1");
-	System.out.println("Rechercher un Fond : tapez 2");
-	System.out.println("Afficher les Fonds : tapez 3");
-        System.out.println("Quitter : tapez 9");
         
-        int choix = 0;
-        Scanner scanner = new Scanner(System.in);
-         choix = scanner.nextInt();
+        //Je crée un fond fictif 
+        Fonds fd = new Fonds(1500);
+        try {
+			nv_pf.ajouter_fond("oui", fd);
+		} catch (FondExistant e2) {
+			// TODO Auto-generated catch block
+			e2.printStackTrace();
+		}
         
-	switch(choix)
-	{
-		case 1 :{
-                    //On demande ï¿½ l'utilisateur les infos du nouveau fond
-            System.out.println("Choisir un nom de fond");
-            String nom_fond = sc.nextLine();
-            System.out.println("Choisir la valeur du fond");
-            double amount_fond = sc.nextDouble();
-            
-            sc.nextLine(); //Vider le scanner
-            
-            //On crï¿½e un nouveau fond avec le bon nom et la bonne valeur   
-            Fonds nv = new Fonds(amount_fond);          
-            
- //Q1.2     //J'ajoute maintenant mon fond dans la hashmap de l'instrument avec comme clï¿½, le nom du fond
-            nv_pf.ajouter_fond(nom_fond, nv);
-            
-	}
-		case 2 : {
-                    //Je demande ï¿½ rechercher un fond
-            System.out.println("Quel est le nom du fond ï¿½ rechercher ?");
-            try {
-				nv_pf.recherche_fond(nom_fond);
-				throw new FondExistant();
-				
-			} catch (FondsInexistant e) {
-				//Question 1.5 : on ajouter le fond ï¿½ la HashMap 
-				Fonds fond = new Fonds(amount_fond);
-				try {
-					nv_pf.ajouter_fond(nom_fond, fond);
-					
-				} catch (FondExistant e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-				System.out.println("Le nouveau fond a ï¿½tï¿½ ajoutï¿½");
-				
-			} catch (FondExistant e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-                }break;
-                
-		case 3 : System.out.println("Sous menu 2"); break;
-                case 9 : arret = true; break;
-		default : System.out.println("entrez un choix entre 1 et 3"); break;
-                //} arret=true;
-                }
-        
+        while (!arret){
+        	
+	        System.out.println("--Menu--");
+			System.out.println("Rechercher un Fond : tapez 1");
+			System.out.println("Afficher les Fonds : tapez 2");
+			System.out.println("Supprimer un Fond : tapez 3");
+			System.out.println("Supprimer un instrument : tapez 4");
+		    System.out.println("Question 1.5 : tapez 5");
+		    System.out.println("Question 1.6 : tapez 6");
+		    System.out.println("Quitter : tapez 9");
+	        
+	        int choix = 0;
+	        
+	        choix = scanner.nextInt();
+	        
+	        switch(choix) {
+	        	case 3 :
+	        		
+	        		System.out.println("Nom du fond a supprimer");
+	                nom_fond = sc.nextLine();
 
+	                nv_pf.suppression_fond(nom_fond);
+	                
+	        		break;
+	        	case 4 :
+	        		
+	        		System.out.println("Nom de l'instrument a supprimer");
+	                nom_instrument = sc.nextLine();
+
+	                nv_pf.suppression_instrument(nom_instrument);
+	                
+	        		break;
+	        	
+	        	case 5 :          
+	    	        //On demande à l'utilisateur les infos du nouveau fond
+	                System.out.println("Nom du fond");
+	                nom_fond = sc.nextLine();
+	    	        
+	    	        //Je demande à rechercher un fond
+	                try {
+	    				nv_pf.recherche_fond(nom_fond);
+	    				throw new FondExistant();
+	    				
+	    			}catch (FondsInexistant e) {
+	    				//Question 1.5 : on ajouter le fond à la HashMap 
+	    				System.out.println("Valeur du fond "+nom_fond+ " ?");
+	    	            amount_fond = sc.nextDouble();
+	    				
+	    	            sc.nextLine();
+	    	            
+	    				Fonds fond = new Fonds(amount_fond);
+	    				try {
+	    					nv_pf.ajouter_fond(nom_fond, fond);
+	    				} catch (FondExistant e1) {
+	    					// TODO Auto-generated catch block
+	    					e1.printStackTrace();
+	    				}
+	    				System.out.println("Le fond "+nom_fond+" a été ajouté");
+	    				
+	    			}catch (FondExistant e) {
+	    				// TODO Auto-generated catch block
+	    				e.printStackTrace();
+	    			}
+	                
+	                break;
+	                
+	        	case 6: //Test de la question 1.6
+	        		//On demande à l'utilisateur le nom de l'instrument 
+	                System.out.println("Nom de l'instrument");
+	                nom_instrument = sc.nextLine();
+	                
+	                //On demande les infos sur le fond
+					System.out.println("Nom du fond");
+	                nom_fond = sc.nextLine();
+	                System.out.println("Valeur du fond");
+	                amount_fond = sc.nextDouble();
+	          
+	                sc.nextLine();
+	                //On instancie le fond
+	                Fonds fond  = new Fonds(amount_fond);
+	                
+	                //On recherche cet instrument 
+					try {
+						nv_pf.recherche_instrument(nom_instrument);
+						
+					} catch (InstrumentInexistant e) {
+						// TODO Auto-generated catch block
+						//e.printStackTrace();
+						
+						//On crée le nouvel instrument et on l'ajoute à la HashMap des instruments
+						Instrument nv_instru = new Instrument();
+						nv_pf.ajouter_instrument(nom_instrument, nv_instru); //Le nouvel instrument est ajouté à la HashMap
+						
+						System.out.println("L'instrument a été crée");
+					}
+					
+					//On ajoute le fond à l'instrument.
+					nv_pf.getMap_instru().get(nom_instrument).ajouter_fond(fond);					
+	                System.out.println("Le fond "+nom_fond+" a été ajouté à l'instrument "+nom_instrument);
+	                
+	                break;
+	        		
+	        	default :
+	        		System.out.println("Entrez un numéro valable svp");
+	                break;
+	        		
+	        }System.out.println("Appuyez sur entrée pour continuer"); sc.nextLine();
+        	
+        	
+            
+            
+            
+        }
+			
+		         
+	        
+        }
         
-    }
+   }
     
-}

@@ -39,12 +39,19 @@ public class Portefeuille {
         
     }
     
+    public void ajouter_instrument(String nom_instrument, Instrument instru) {
+    	if(map_instru.get(nom_instrument) == null) { //Si le fond n'existe pas, je peux l'ajouter
+    		map_instru.put(nom_instrument, instru);
+    	}
+        
+    }
     
     public double recherche_fond(String nom_fond) throws FondsInexistant{ //Je re�ois le param�tre du fond
     	//Je recherche mon fond dans ma HashMap
     	Fonds fd = map_fonds.get(nom_fond);
     	
     	//Si l'objet reçu est null, cela signifie que le fond n'existe pas. Exception.
+    	
     	if(fd == null) {
     		throw new FondsInexistant();
     	}
@@ -74,6 +81,51 @@ public class Portefeuille {
     	map_instru.get(nom_instrument).ajouter_fond(fond);
     	
     }
+    
+    public void suppression_fond(String nom_fond) {
+    	//On vérifie si le fond existe
+    	try {
+    		recherche_fond(nom_fond);
+    		map_fonds.remove(nom_fond);
+    		System.out.println("Fond supprimé (de la HashMap du Portefeuille)");
+    	} catch (FondsInexistant e) {
+    		//e.printStackTrace();
+    	}
+    }
+    
+    public void suppression_instrument(String nom_instrument) {
+    	//On vérifie si le fond existe
+    	try {
+    		recherche_instrument(nom_instrument);
+    		
+    		//Si il existe, alors on vide sa collection d'instrument
+    		map_instru.get(nom_instrument).getListe_fonds().clear();
+    		
+    		//On supprime ensuite cet instrument de la HashMap
+    		map_instru.remove(nom_instrument);
+    		System.out.println("Instrument supprimé (de la HashMap du Portefeuille)");
+    	} catch (InstrumentInexistant e) {
+    		//e.printStackTrace();
+    	}
+    }
+    
+    //Getters and Setters
+	public Map<String, Fonds> getMap_fonds() {
+		return map_fonds;
+	}
+
+	public void setMap_fonds(Map<String, Fonds> map_fonds) {
+		this.map_fonds = map_fonds;
+	}
+
+	public Map<String, Instrument> getMap_instru() {
+		return map_instru;
+	}
+
+	public void setMap_instru(Map<String, Instrument> map_instru) {
+		this.map_instru = map_instru;
+	}
+
     
     /*
     Je cr�e une m�thode qui me permet de rechercher un portefeuille en 

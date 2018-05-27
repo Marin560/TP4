@@ -21,8 +21,7 @@ public class Instrument implements Comparable {
     //Constructeur
     public Instrument(){
         liste_fonds = new ArrayList<Fonds>();
-        
-       
+ 
     }
     
     public void ajouter_fond(Fonds fond) {
@@ -36,8 +35,6 @@ public class Instrument implements Comparable {
 	public void setListe_fonds(ArrayList<Fonds> liste_fonds) {
 		this.liste_fonds = liste_fonds;
 	}
-
-        Arrays.sort(Fonds);
 
     @Override
     public int compareTo(Object t) {
